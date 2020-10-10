@@ -1,4 +1,32 @@
-library(dplyr)
+#import dplyr
+library(dplyr) 
+# read csv as dataframe
 MechaCar_mpg <- read.csv(file='/Users/mac/Desktop/Class/MechaCar_Statistical_Analysis/MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
+# linear regression
 MechaCar_mpg_Analysis <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data=MechaCar_mpg)
+# summary
 summary(MechaCar_mpg_Analysis)
+# read csv as dataframe
+Suspension_Coil <- read.csv(file='/Users/mac/Desktop/Class/MechaCar_Statistical_Analysis/Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+# summary stats
+total_summary <- summarize(Suspension_Coil, mean = mean(PSI),median = median(PSI), variance = var(PSI),SD = sd(PSI))
+# group by lot
+lot_summary <- 
+  Suspension_Coil %>% 
+  group_by(Manufacturing_Lot) %>% 
+  summarize(mean = mean(PSI),median = median(PSI), variance = var(PSI),SD = sd(PSI))
+# t-test for all PSI
+t_test_all <- 
+  t.test(x = Suspension_Coil$PSI,mu = 1500)
+# t-test for Lot1 PSI
+t_test_1 <-
+  t.test(x = Suspension_Coil$PSI,mu=1500,
+         subset = Suspension_Coil$Manufacturing_Lot == "Lot1" )
+# t-test for Lot2 PSI
+t_test_2 <-
+  t.test(x = Suspension_Coil$PSI,mu=1500,
+         subset = Suspension_Coil$Manufacturing_Lot == "Lot2" )
+# t-test for Lot3 PSI
+t_test_3 <-
+  t.test(x = Suspension_Coil$PSI,mu=1500,
+         subset = Suspension_Coil$Manufacturing_Lot == "Lot3" )
