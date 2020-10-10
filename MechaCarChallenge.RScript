@@ -1,0 +1,4 @@
+library(dplyr)
+MechaCar_mpg <- read.csv(file='/Users/mac/Desktop/Class/MechaCar_Statistical_Analysis/MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
+MechaCar_mpg_Analysis <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data=MechaCar_mpg)
+summary(MechaCar_mpg_Analysis)
