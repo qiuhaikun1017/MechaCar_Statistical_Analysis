@@ -19,14 +19,8 @@ lot_summary <-
 t_test_all <- 
   t.test(x = Suspension_Coil$PSI,mu = 1500)
 # t-test for Lot1 PSI
-t_test_1 <-
-  t.test(x = Suspension_Coil$PSI,mu=1500,
-         subset = Suspension_Coil$Manufacturing_Lot == "Lot1" )
+t_test_1 <- t.test(x = Suspension_Coil$PSI[Suspension_Coil$Manufacturing_Lot == "Lot1"], mu = 1500)
 # t-test for Lot2 PSI
-t_test_2 <-
-  t.test(x = Suspension_Coil$PSI,mu=1500,
-         subset = Suspension_Coil$Manufacturing_Lot == "Lot2" )
+t_test_2 <- t.test(x = Suspension_Coil$PSI[Suspension_Coil$Manufacturing_Lot == "Lot2"], mu = 1500)
 # t-test for Lot3 PSI
-t_test_3 <-
-  t.test(x = Suspension_Coil$PSI,mu=1500,
-         subset = Suspension_Coil$Manufacturing_Lot == "Lot3" )
+t_test_3 <- t.test(x = Suspension_Coil$PSI[Suspension_Coil$Manufacturing_Lot == "Lot3"], mu = 1500)
